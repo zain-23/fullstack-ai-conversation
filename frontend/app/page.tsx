@@ -30,10 +30,11 @@ export default function Home() {
         try {
           const parsedData = JSON.parse(data);
 
-          if (parsedData.type === 'TurnInfo') {
-            if (parsedData.event === 'EndOfTurn') {
-              setData((prev) => prev + '\n' + parsedData.transcript);
-            }
+          if (
+            parsedData.type === 'TurnInfo' &&
+            parsedData.event === 'EndOfTurn'
+          ) {
+            setData((prev) => prev + '\n' + parsedData.transcript);
           }
         } catch (error) {
           console.error('Error parsing message data:', error);
